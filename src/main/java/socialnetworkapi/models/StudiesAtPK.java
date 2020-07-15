@@ -26,13 +26,13 @@ public class StudiesAtPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StudiesAtPK that = (StudiesAtPK) o;
-        return person == that.person &&
-                university == that.university &&
-                classYear == that.classYear;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        StudiesAtPK that = (StudiesAtPK) obj;
+        return (this.person == that.person &&
+                this.university == that.university &&
+                this.classYear == that.classYear);
     }
 
     @Override
