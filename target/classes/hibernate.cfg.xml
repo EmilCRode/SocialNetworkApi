@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- BD Name -->
+        <property name="connection.url">jdbc:postgresql://localhost/Social_Network</property>
+        <!-- DB Driver -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <!-- DB User -->
+        <property name="connection.username">postgres</property>
+        <!-- DB Password -->
+        <property name="connection.password">badapplegreyreal</property>
+
+        <!-- DB Dialect -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <!-- create / create-drop / update -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Show SQL in console -->
+        <property name="show_sql">true</property>
+        <!-- Show SQL formatted -->
+        <property name="format_sql">true</property>
+
+        <mapping class="socialnetworkapi.models.City"/>
+        <mapping class="socialnetworkapi.models.Company"/>
+        <mapping class="socialnetworkapi.models.Continent"/>
+        <mapping class="socialnetworkapi.models.Country"/>
+        <mapping class="socialnetworkapi.models.EmailAddresses"/>
+        <mapping class="socialnetworkapi.models.Forum"/>
+        <mapping class="socialnetworkapi.models.HasMember"/>
+        <mapping class="socialnetworkapi.models.Knows"/>
+        <mapping class="socialnetworkapi.models.LikesPost"/>
+        <mapping class="socialnetworkapi.models.LikesRemark"/>
+        <mapping class="socialnetworkapi.models.Person"/>
+        <mapping class="socialnetworkapi.models.PkpSymmetric"/>
+        <mapping class="socialnetworkapi.models.Post"/>
+        <mapping class="socialnetworkapi.models.Remark"/>
+        <mapping class="socialnetworkapi.models.Speaks"/>
+        <mapping class="socialnetworkapi.models.StudiesAt"/>
+        <mapping class="socialnetworkapi.models.Tag"/>
+        <mapping class="socialnetworkapi.models.TagClass"/>
+        <mapping class="socialnetworkapi.models.University"/>
+        <mapping class="socialnetworkapi.models.WorksAt"/>
+        <mapping class="socialnetworkapi.models.WorksAtTermination"/>
+    </session-factory>
+</hibernate-configuration>
