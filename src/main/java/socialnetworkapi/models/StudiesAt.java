@@ -28,18 +28,29 @@ public class StudiesAt {
     public StudiesAt() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StudiesAt studiesAt = (StudiesAt) o;
-        return person == studiesAt.person &&
-                university == studiesAt.university &&
-                classYear == studiesAt.classYear;
+    public int hashCode() {
+        return Objects.hash(person, university, classYear);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(person, university, classYear);
+    public boolean equals(Object obj){
+        // if both the object references are
+        // referring to the same object.
+        if (this == obj)
+            return true;
+        // it checks if the argument is of the
+        // right type by comparing the classes
+        // of the passed argument and this object.
+        if(obj == null || obj.getClass()!= this.getClass())
+            return false;
+
+        // type casting of the argument.
+        StudiesAt other = (StudiesAt) obj;
+
+        // comparing the state of argument with
+        // the state of 'this' Object.
+        return (other.id.equals(this.id)  && other.person.equals(this.person) &&
+                other.university.equals(this.university) && other.classYear==this.classYear);
     }
 
     public StudiesAtPK getId() {
