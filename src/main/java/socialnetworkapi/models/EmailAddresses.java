@@ -19,12 +19,12 @@ public class EmailAddresses {
     public EmailAddresses() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EmailAddresses that = (EmailAddresses) o;
-        return person == that.person &&
-                Objects.equals(email, that.email);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        EmailAddresses other = (EmailAddresses) obj;
+        return this.person.equals(other.person) &&
+                this.email == other.email;
     }
 
     @Override

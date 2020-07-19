@@ -32,20 +32,18 @@ public class Country {
     @OneToMany(mappedBy = "country")
     private Collection<Remark> remarks;
 
-    /* --- */
-
     public Country() {
 
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Country country = (Country) o;
-        return counid == country.counid &&
-                isPartOf == country.isPartOf &&
-                Objects.equals(name, country.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Country other = (Country) obj;
+        return counid == other.counid &&
+                this.isPartOf.equals(other.isPartOf) &&
+                this.name == other.name;
     }
 
     @Override

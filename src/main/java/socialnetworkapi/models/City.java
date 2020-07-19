@@ -20,24 +20,23 @@ public class City {
     @JoinColumn(name = "is_part_of", referencedColumnName = "counid", nullable = false)
     private Country isPartOf;
 
+    /* Do we need this? */
     @OneToMany(mappedBy = "city")
     private Collection<Person> persons;
 
     @OneToMany(mappedBy = "city")
     private Collection<University> universities;
 
-    /* --- */
-
     public City() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        City city = (City) o;
-        return cityid == city.cityid &&
-                isPartOf == city.isPartOf &&
-                Objects.equals(name, city.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        City other = (City) obj;
+        return (cityid == other.cityid &&
+                this.isPartOf.equals(other.isPartOf) &&
+                this.name == other.name);
     }
 
     @Override

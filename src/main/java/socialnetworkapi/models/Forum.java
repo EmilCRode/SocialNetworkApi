@@ -35,19 +35,17 @@ public class Forum {
     @OneToMany(mappedBy = "forum")
     private Collection<Post> posts;
 
-    /* --- */
-
     public Forum() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Forum forum = (Forum) o;
-        return fid == forum.fid &&
-                moderator == forum.moderator &&
-                Objects.equals(title, forum.title) &&
-                Objects.equals(creationDate, forum.creationDate);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Forum other = (Forum) obj;
+        return fid == other.fid &&
+                this.moderator.equals(other.moderator) &&
+                this.title == other.title &&
+                this.creationDate.equals(other.creationDate);
     }
 
     @Override

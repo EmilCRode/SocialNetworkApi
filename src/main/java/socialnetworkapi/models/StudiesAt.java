@@ -30,7 +30,7 @@ public class StudiesAt {
     @Override
     public int hashCode() {
         return Objects.hash(person, university, classYear);
-    }
+    } //Maybe just use the PK hash
 
     @Override
     public boolean equals(Object obj){

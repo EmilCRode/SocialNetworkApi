@@ -19,19 +19,17 @@ public class Continent {
     @OneToMany(mappedBy = "isPartOf")
     private Collection<Country> countries;
 
-    /* --- */
-
     public Continent() {
 
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Continent continent = (Continent) o;
-        return contid == continent.contid &&
-                Objects.equals(name, continent.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Continent other = (Continent) obj;
+        return contid == other.contid &&
+                this.name == other.name;
     }
 
     @Override

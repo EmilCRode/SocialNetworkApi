@@ -20,26 +20,25 @@ public class Company {
     @JoinColumn(name = "country", referencedColumnName = "counid", nullable = false)
     private Country country;
 
+    /* Do we need this?*/
     @OneToMany(mappedBy = "company")
     private Collection<WorksAt> worksAts;
 
     @OneToMany(mappedBy = "company")
     private Collection<WorksAtTermination> worksAtTerminations;
 
-    /* --- */
-
     public Company() {
 
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Company company = (Company) o;
-        return cid == company.cid &&
-                country == company.country &&
-                Objects.equals(name, company.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Company other = (Company) obj;
+        return cid == other.cid &&
+                this.country.equals(other.country) &&
+                this.name == other.name;
     }
 
     @Override
