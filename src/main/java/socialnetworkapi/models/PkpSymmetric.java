@@ -1,14 +1,14 @@
 package socialnetworkapi.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "pkp_symmetric")
 public class PkpSymmetric {
+    @EmbeddedId
+    private PkpSymmetricPK id;
+
     @Basic
     @Column(name = "person_1", nullable = true)
     private Long person1;

@@ -34,6 +34,7 @@
         <mapping class="socialnetworkapi.models.LikesRemark"/>
         <mapping class="socialnetworkapi.models.Person"/>
         <mapping class="socialnetworkapi.models.PkpSymmetric"/>
+        <mapping class="socialnetworkapi.models.PkpSymmetricPK"/>
         <mapping class="socialnetworkapi.models.Post"/>
         <mapping class="socialnetworkapi.models.Remark"/>
         <mapping class="socialnetworkapi.models.Speaks"/>
