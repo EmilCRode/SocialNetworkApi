@@ -1,7 +1,6 @@
 package socialnetworkapi.models;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,8 +11,6 @@ public class KnowsPK implements Serializable {
     @Column(name = "person_2", nullable = false)
     private long person2;
 
-    /* --- */
-
     public KnowsPK() {}
 
     public KnowsPK(long person1, long person2) {
@@ -22,12 +19,12 @@ public class KnowsPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        KnowsPK knowsPK = (KnowsPK) o;
-        return person1 == knowsPK.person1 &&
-                person2 == knowsPK.person2;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        KnowsPK other = (KnowsPK) obj;
+        return person1 == other.person1 &&
+                person2 == other.person2;
     }
 
     @Override

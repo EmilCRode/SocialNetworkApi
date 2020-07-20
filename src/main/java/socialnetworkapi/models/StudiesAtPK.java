@@ -1,7 +1,6 @@
 package socialnetworkapi.models;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,8 +14,6 @@ public class StudiesAtPK implements Serializable {
     @Column(name = "class_year", nullable = false)
     private int classYear;
 
-    /* --- */
-
     public  StudiesAtPK() {}
 
     public StudiesAtPK(long person, long university, int classYear) {
@@ -29,10 +26,10 @@ public class StudiesAtPK implements Serializable {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        StudiesAtPK that = (StudiesAtPK) obj;
-        return (this.person == that.person &&
-                this.university == that.university &&
-                this.classYear == that.classYear);
+        StudiesAtPK other = (StudiesAtPK) obj;
+        return (this.person == other.person &&
+                this.university == other.university &&
+                this.classYear == other.classYear);
     }
 
     @Override

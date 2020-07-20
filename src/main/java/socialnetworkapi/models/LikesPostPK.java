@@ -11,8 +11,6 @@ public class LikesPostPK implements Serializable {
     @Column(name = "post", nullable = false)
     private long post;
 
-    /* --- */
-
     public LikesPostPK() {}
 
     public LikesPostPK(long person, long post) {
@@ -21,12 +19,12 @@ public class LikesPostPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LikesPostPK that = (LikesPostPK) o;
-        return person == that.person &&
-                post == that.post;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        LikesPostPK other = (LikesPostPK) obj;
+        return person == other.person &&
+                post == other.post;
     }
 
     @Override

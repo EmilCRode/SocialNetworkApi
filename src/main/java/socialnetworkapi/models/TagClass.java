@@ -31,12 +31,12 @@ public class TagClass {
     public TagClass() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TagClass tagClass = (TagClass) o;
-        return tcid == tagClass.tcid &&
-                Objects.equals(name, tagClass.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        TagClass other = (TagClass) obj;
+        return (tcid == other.tcid) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

@@ -13,21 +13,21 @@ public class Speaks {
     @Column(name = "lang", nullable = false, length = -1)
     private String lang;
 
+    /*  Questionable */
     @ManyToOne
     @MapsId("person")
     @JoinColumn(name = "person", referencedColumnName = "pid", nullable = false)
     private Person personByPerson;
 
-    /* --- */
-
     public Speaks() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Speaks speaks = (Speaks) o;
-        return Objects.equals(lang, speaks.lang);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Speaks other = (Speaks) obj;
+        return  Objects.equals(this.lang, other.lang) &&
+                Objects.equals(this.personByPerson, other.personByPerson);
     }
 
     @Override

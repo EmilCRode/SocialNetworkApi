@@ -17,17 +17,15 @@ public class PkpSymmetric {
     @Column(name = "person_2", nullable = true)
     private Long person2;
 
-    /* --- */
-
     public PkpSymmetric() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PkpSymmetric that = (PkpSymmetric) o;
-        return Objects.equals(person1, that.person1) &&
-                Objects.equals(person2, that.person2);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        PkpSymmetric other = (PkpSymmetric) obj;
+        return Objects.equals(this.person1, other.person1) &&
+                Objects.equals(this.person2, other.person2);
     }
 
     @Override

@@ -59,25 +59,23 @@ public class Remark {
     @JoinTable(name = "remark_has_tag", joinColumns = @JoinColumn(name = "remark"), inverseJoinColumns = @JoinColumn(name = "tag"))
     private Collection<Tag> tags;
 
-    /* --- */
-
     public Remark() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Remark remark = (Remark) o;
-        return rid == remark.rid &&
-                length == remark.length &&
-                creator == remark.creator &&
-                country == remark.country &&
-                Objects.equals(creationDate, remark.creationDate) &&
-                Objects.equals(locationIp, remark.locationIp) &&
-                Objects.equals(browserUsed, remark.browserUsed) &&
-                Objects.equals(content, remark.content) &&
-                Objects.equals(replyOfPost, remark.replyOfPost) &&
-                Objects.equals(replyOfRemark, remark.replyOfRemark);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Remark other = (Remark) obj;
+        return  this.rid == other.rid &&
+                this.length == other.length &&
+                Objects.equals(this.creator, other.creator) &&
+                Objects.equals(this.country, other.country) &&
+                Objects.equals(this.creationDate, other.creationDate) &&
+                Objects.equals(this.locationIp, other.locationIp) &&
+                Objects.equals(this.browserUsed, other.browserUsed) &&
+                Objects.equals(this.content, other.content) &&
+                Objects.equals(this.replyOfPost, other.replyOfPost) &&
+                Objects.equals(this.replyOfRemark, other.replyOfRemark);
     }
 
     @Override

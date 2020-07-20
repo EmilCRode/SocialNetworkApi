@@ -28,20 +28,18 @@ public class WorksAtTermination {
     @JoinColumn(name = "company", referencedColumnName = "cid", nullable = false)
     private Company company;
 
-    /* --- */
-
     public WorksAtTermination() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WorksAtTermination that = (WorksAtTermination) o;
-        return watid == that.watid &&
-                person == that.person &&
-                company == that.company &&
-                workFrom == that.workFrom &&
-                Objects.equals(terminationDate, that.terminationDate);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        WorksAtTermination other = (WorksAtTermination) obj;
+        return  (this.watid == other.watid) &&
+                (this.workFrom == other.workFrom) &&
+                Objects.equals(this.person, other.person) &&
+                Objects.equals(this.company, other.company) &&
+                Objects.equals(this.terminationDate, other.terminationDate);
     }
 
     @Override

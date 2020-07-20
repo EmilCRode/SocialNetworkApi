@@ -89,24 +89,22 @@ public class Person {
     @OneToMany(mappedBy = "person")
     private Collection<WorksAtTermination> worksAtTerminations;
 
-    /* --- */
-
     public Person() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return pid == person.pid &&
-                city == person.city &&
-                Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName) &&
-                Objects.equals(gender, person.gender) &&
-                Objects.equals(birthday, person.birthday) &&
-                Objects.equals(creationDate, person.creationDate) &&
-                Objects.equals(locationIp, person.locationIp) &&
-                Objects.equals(browser, person.browser);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person other = (Person) obj;
+        return pid == other.pid &&
+                Objects.equals(this.city, other.city) &&
+                Objects.equals(this.firstName, other.firstName) &&
+                Objects.equals(this.lastName, other.lastName) &&
+                Objects.equals(this.gender, other.gender) &&
+                Objects.equals(this.birthday, other.birthday) &&
+                Objects.equals(this.creationDate, other.creationDate) &&
+                Objects.equals(this.locationIp, other.locationIp) &&
+                Objects.equals(this.browser, other.browser);
     }
 
     @Override

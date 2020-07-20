@@ -23,18 +23,16 @@ public class University {
     @OneToMany(mappedBy = "university")
     private Collection<StudiesAt> studiesAts;
 
-    /* --- */
-
     public University() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        University that = (University) o;
-        return uid == that.uid &&
-                city == that.city &&
-                Objects.equals(name, that.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        University other = (University) obj;
+        return  (uid == other.uid) &&
+                Objects.equals(this.city, other.city) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

@@ -63,26 +63,24 @@ public class Post {
     @OneToMany(mappedBy = "replyOfPost")
     private Collection<Remark> remarks;
 
-    /* --- */
-
     public Post() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Post post = (Post) o;
-        return postid == post.postid &&
-                length == post.length &&
-                creator == post.creator &&
-                forum == post.forum &&
-                country == post.country &&
-                Objects.equals(imageFile, post.imageFile) &&
-                Objects.equals(creationDate, post.creationDate) &&
-                Objects.equals(locationIp, post.locationIp) &&
-                Objects.equals(browserUsed, post.browserUsed) &&
-                Objects.equals(language, post.language) &&
-                Objects.equals(content, post.content);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Post other = (Post) obj;
+        return  this.postid == other.postid &&
+                this.length == other.length &&
+                Objects.equals(this.creator, other.creator) &&
+                Objects.equals(this.forum, other.forum) &&
+                Objects.equals(this.country, other.country) &&
+                Objects.equals(this.imageFile, other.imageFile) &&
+                Objects.equals(this.creationDate, other.creationDate) &&
+                Objects.equals(this.locationIp, other.locationIp) &&
+                Objects.equals(this.browserUsed, other.browserUsed) &&
+                Objects.equals(this.language, other.language) &&
+                Objects.equals(this.content, other.content);
     }
 
     @Override

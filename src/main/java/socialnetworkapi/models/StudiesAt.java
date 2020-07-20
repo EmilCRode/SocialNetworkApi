@@ -23,8 +23,6 @@ public class StudiesAt {
     @Column(name = "class_year", nullable = false)
     private int classYear;
 
-    /* --- */
-
     public StudiesAt() {}
 
     @Override
@@ -43,14 +41,12 @@ public class StudiesAt {
         // of the passed argument and this object.
         if(obj == null || obj.getClass()!= this.getClass())
             return false;
-
         // type casting of the argument.
         StudiesAt other = (StudiesAt) obj;
-
         // comparing the state of argument with
         // the state of 'this' Object.
-        return (other.id.equals(this.id)  && other.person.equals(this.person) &&
-                other.university.equals(this.university) && other.classYear==this.classYear);
+        return  Objects.equals(other.id, this.id) && Objects.equals(other.person, this.person) &&
+                Objects.equals(other.university, this.university) && (other.classYear==this.classYear);
     }
 
     public StudiesAtPK getId() {

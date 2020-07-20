@@ -23,18 +23,16 @@ public class WorksAt {
     @Column(name = "work_from", nullable = false)
     private int workFrom;
 
-    /* --- */
-
     public WorksAt() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WorksAt worksAt = (WorksAt) o;
-        return person == worksAt.person &&
-                company == worksAt.company &&
-                workFrom == worksAt.workFrom;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        WorksAt other = (WorksAt) obj;
+        return  Objects.equals(this.person, other.person) &&
+                Objects.equals(this.company, other.company) &&
+                workFrom == other.workFrom;
     }
 
     @Override

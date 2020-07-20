@@ -37,12 +37,12 @@ public class Tag {
     public Tag() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tag tag = (Tag) o;
-        return tid == tag.tid &&
-                Objects.equals(name, tag.name);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Tag other = (Tag) obj;
+        return (tid == other.tid) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

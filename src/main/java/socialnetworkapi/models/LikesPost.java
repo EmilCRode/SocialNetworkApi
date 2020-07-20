@@ -29,13 +29,13 @@ public class LikesPost {
     public LikesPost() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LikesPost likesPost = (LikesPost) o;
-        return person == likesPost.person &&
-                post == likesPost.post &&
-                Objects.equals(creationDate, likesPost.creationDate);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        LikesPost other = (LikesPost) obj;
+        return Objects.equals(this.person, other.person) &&
+                Objects.equals(this.post, other.post) &&
+                Objects.equals(this.creationDate, other.creationDate);
     }
 
     @Override

@@ -24,8 +24,6 @@ public class LikesRemark {
     @Column(name = "creation_date", nullable = false)
     private Timestamp creationDate;
 
-    /* --- */
-
     public LikesRemark() {}
 
     @Override
@@ -33,9 +31,9 @@ public class LikesRemark {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LikesRemark that = (LikesRemark) o;
-        return person == that.person &&
-                remark == that.remark &&
-                Objects.equals(creationDate, that.creationDate);
+        return Objects.equals(this.person, that.person) &&
+                Objects.equals(this.remark, that.remark) &&
+                Objects.equals(this.creationDate, that.creationDate);
     }
 
     @Override
