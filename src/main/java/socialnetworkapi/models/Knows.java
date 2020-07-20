@@ -24,18 +24,16 @@ public class Knows {
     @Column(name = "creation_date", nullable = false)
     private Timestamp creationDate;
 
-    /* --- */
-
     public Knows() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Knows knows = (Knows) o;
-        return person1 == knows.person1 &&
-                person2 == knows.person2 &&
-                Objects.equals(creationDate, knows.creationDate);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Knows other = (Knows) obj;
+        return Objects.equals(this.person1, other.person1) &&
+                Objects.equals(this.person2, other.person2) &&
+                Objects.equals(this.creationDate, other.creationDate);
     }
 
     @Override

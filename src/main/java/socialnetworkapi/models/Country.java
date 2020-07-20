@@ -42,8 +42,8 @@ public class Country {
         if (obj == null || getClass() != obj.getClass()) return false;
         Country other = (Country) obj;
         return counid == other.counid &&
-                this.isPartOf.equals(other.isPartOf) &&
-                this.name == other.name;
+                Objects.equals(this.isPartOf, other.isPartOf) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

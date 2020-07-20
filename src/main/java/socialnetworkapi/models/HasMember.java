@@ -24,18 +24,17 @@ public class HasMember {
     @Column(name = "join_date", nullable = false)
     private Timestamp joinDate;
 
-    /* --- */
-
     public HasMember() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HasMember hasMember = (HasMember) o;
-        return forum == hasMember.forum &&
-                person == hasMember.person &&
-                Objects.equals(joinDate, hasMember.joinDate);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        HasMember other = (HasMember) obj;
+        return  Objects.equals(this.id, other.id) &&
+                Objects.equals(this.forum, other.forum) &&
+                Objects.equals(this.person, other.person) &&
+                Objects.equals(this.joinDate, other.joinDate);
     }
 
     @Override

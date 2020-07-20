@@ -36,9 +36,9 @@ public class Company {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Company other = (Company) obj;
-        return cid == other.cid &&
-                this.country.equals(other.country) &&
-                this.name == other.name;
+        return (cid == other.cid) &&
+                Objects.equals(this.country, other.country) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

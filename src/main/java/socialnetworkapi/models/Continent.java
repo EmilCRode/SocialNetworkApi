@@ -28,8 +28,8 @@ public class Continent {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Continent other = (Continent) obj;
-        return contid == other.contid &&
-                this.name == other.name;
+        return (contid == other.contid) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

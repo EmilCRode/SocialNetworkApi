@@ -34,9 +34,9 @@ public class City {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         City other = (City) obj;
-        return (cityid == other.cityid &&
-                this.isPartOf.equals(other.isPartOf) &&
-                this.name == other.name);
+        return (cityid == other.cityid) &&
+                Objects.equals(this.isPartOf, other.isPartOf) &&
+                Objects.equals(this.name, other.name);
     }
 
     @Override

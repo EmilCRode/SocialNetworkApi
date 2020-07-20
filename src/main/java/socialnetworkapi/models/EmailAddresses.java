@@ -23,8 +23,8 @@ public class EmailAddresses {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         EmailAddresses other = (EmailAddresses) obj;
-        return this.person.equals(other.person) &&
-                this.email == other.email;
+        return Objects.equals(this.person, other.person) &&
+                Objects.equals(this.email, other.email);
     }
 
     @Override

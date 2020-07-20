@@ -43,9 +43,9 @@ public class Forum {
         if (obj == null || getClass() != obj.getClass()) return false;
         Forum other = (Forum) obj;
         return fid == other.fid &&
-                this.moderator.equals(other.moderator) &&
-                this.title == other.title &&
-                this.creationDate.equals(other.creationDate);
+                Objects.equals(this.moderator, other.moderator) &&
+                Objects.equals(this.title, other.title) &&
+                Objects.equals(this.creationDate, other.creationDate);
     }
 
     @Override

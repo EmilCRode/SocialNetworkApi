@@ -11,8 +11,6 @@ public class HasMemberPK implements Serializable {
     @Column(name = "person", nullable = false)
     private long person;
 
-    /* --- */
-
     public HasMemberPK() {}
 
     public HasMemberPK(long forum, long person) {
@@ -21,12 +19,12 @@ public class HasMemberPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HasMemberPK that = (HasMemberPK) o;
-        return forum == that.forum &&
-                person == that.person;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        HasMemberPK other = (HasMemberPK) obj;
+        return (this.forum == other.forum) &&
+                (this.person == other.person);
     }
 
     @Override
