@@ -17,7 +17,7 @@ public class Tag {
     private String name;
 
     @ManyToMany(mappedBy = "tags")
-    private Collection<Tag> forums;
+    private Collection<Forum> forums;
 
     @ManyToMany(mappedBy = "interests")
     private Collection<Person> hasInterests;
@@ -29,7 +29,7 @@ public class Tag {
     private Collection<Remark> remarks;
 
     @ManyToMany
-    @JoinTable(name = "post_has_type", joinColumns = @JoinColumn(name = "tag"), inverseJoinColumns = @JoinColumn(name = "tag_class"))
+    @JoinTable(name = "tag_has_type", joinColumns = @JoinColumn(name = "tag"), inverseJoinColumns = @JoinColumn(name = "tag_class"))
     private Collection<TagClass> tagClasses;
 
     /* --- */
@@ -64,10 +64,10 @@ public class Tag {
         this.name = name;
     }
 
-    public Collection<Tag> getForums() {
+    public Collection<Forum> getForums() {
         return forums;
     }
-    public void setForums(Collection<Tag> forums) {
+    public void setForums(Collection<Forum> forums) {
         this.forums = forums;
     }
 

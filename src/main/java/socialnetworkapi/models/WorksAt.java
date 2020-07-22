@@ -19,10 +19,6 @@ public class WorksAt {
     @JoinColumn(name = "company", referencedColumnName = "cid", nullable = false)
     private Company company;
 
-    @MapsId("work_from")
-    @Column(name = "work_from", nullable = false)
-    private int workFrom;
-
     public WorksAt() {}
 
     @Override
@@ -31,13 +27,12 @@ public class WorksAt {
         if (obj == null || getClass() != obj.getClass()) return false;
         WorksAt other = (WorksAt) obj;
         return  Objects.equals(this.person, other.person) &&
-                Objects.equals(this.company, other.company) &&
-                workFrom == other.workFrom;
+                Objects.equals(this.company, other.company);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(person, company, workFrom);
+        return Objects.hash(person, company);
     }
 
     public WorksAtPK getId() {
@@ -45,13 +40,6 @@ public class WorksAt {
     }
     public void setId(WorksAtPK id) {
         this.id = id;
-    }
-
-    public int getWorkFrom() {
-        return workFrom;
-    }
-    public void setWorkFrom(int workFrom) {
-        this.workFrom = workFrom;
     }
 
     public Person getPerson() {

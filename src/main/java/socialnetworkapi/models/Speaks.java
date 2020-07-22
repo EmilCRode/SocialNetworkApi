@@ -9,15 +9,11 @@ public class Speaks {
     @EmbeddedId
     private SpeaksPK id;
 
-    @MapsId("lang")
-    @Column(name = "lang", nullable = false, length = -1)
-    private String lang;
-
     /*  Questionable */
     @ManyToOne
     @MapsId("person")
     @JoinColumn(name = "person", referencedColumnName = "pid", nullable = false)
-    private Person personByPerson;
+    private Person person;
 
     public Speaks() {}
 
@@ -26,13 +22,12 @@ public class Speaks {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Speaks other = (Speaks) obj;
-        return  Objects.equals(this.lang, other.lang) &&
-                Objects.equals(this.personByPerson, other.personByPerson);
+        return Objects.equals(this.person, other.person);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lang);
+        return Objects.hash();
     }
 
     public SpeaksPK getId() {
@@ -42,17 +37,10 @@ public class Speaks {
         this.id = id;
     }
 
-    public String getLang() {
-        return lang;
+    public Person getPerson() {
+        return person;
     }
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public Person getPersonByPerson() {
-        return personByPerson;
-    }
-    public void setPersonByPerson(Person personByPerson) {
-        this.personByPerson = personByPerson;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

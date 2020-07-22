@@ -19,15 +19,11 @@ public class StudiesAt {
     @JoinColumn(name = "university", referencedColumnName = "uid", nullable = false)
     private University university;
 
-    @MapsId("class_year")
-    @Column(name = "class_year", nullable = false)
-    private int classYear;
-
     public StudiesAt() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(person, university, classYear);
+        return Objects.hash(person, university);
     }
 
     @Override
@@ -46,7 +42,7 @@ public class StudiesAt {
         // comparing the state of argument with
         // the state of 'this' Object.
         return  Objects.equals(other.id, this.id) && Objects.equals(other.person, this.person) &&
-                Objects.equals(other.university, this.university) && (other.classYear==this.classYear);
+                Objects.equals(other.university, this.university);
     }
 
     public StudiesAtPK getId() {
@@ -54,13 +50,6 @@ public class StudiesAt {
     }
     public void setId(StudiesAtPK id) {
         this.id = id;
-    }
-
-    public int getClassYear() {
-        return classYear;
-    }
-    public void setClassYear(int classYear) {
-        this.classYear = classYear;
     }
 
     public Person getPerson() {
