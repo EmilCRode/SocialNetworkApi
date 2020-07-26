@@ -112,6 +112,19 @@ public class Person {
         return Objects.hash(pid, firstName, lastName, gender, birthday, creationDate, locationIp, browser, city);
     }
 
+    @Override
+    public String toString(){
+        return      "pid: " + pid
+                +   "\nfirst name: " + firstName
+                +   "\nlast name: " + lastName
+                +   "\ngender: " + gender
+                +   "\nbirthday: " + birthday
+                +   "\ncreation date: " + creationDate
+                +   "\nlocation ip: " + locationIp
+                +   "\nbrowser: " + browser
+                +   "\ncity: " + city.getName();
+    }
+
     public long getPid() {
         return pid;
     }

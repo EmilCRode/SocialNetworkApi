@@ -1,8 +1,9 @@
 package socialnetworkapi;
 
-import org.hibernate.*;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import socialnetworkapi.models.Person;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,12 +19,13 @@ public class Main {
         }
 
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        Person p94 = session.get(Person.class, (long) 94);
-        transaction.commit();
-        session.close();
+        //Transaction transaction = session.beginTransaction();
+        //Person p94 = session.get(Person.class, (long) 94);
+        //transaction.commit();
 
-        System.out.println(p94.getFirstName());
-        System.out.println(p94.getLastName());
+        PersonRelatedImpl pApi = new PersonRelatedImpl();
+        pApi.getProfile(session, (long) 94);
+
+        session.close();
     }
 }
