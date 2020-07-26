@@ -27,13 +27,13 @@ public class LikesRemark {
     public LikesRemark() {}
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LikesRemark that = (LikesRemark) o;
-        return Objects.equals(this.person, that.person) &&
-                Objects.equals(this.remark, that.remark) &&
-                Objects.equals(this.creationDate, that.creationDate);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        LikesRemark other = (LikesRemark) obj;
+        return Objects.equals(this.person, other.person) &&
+                Objects.equals(this.remark, other.remark) &&
+                Objects.equals(this.creationDate, other.creationDate);
     }
 
     @Override

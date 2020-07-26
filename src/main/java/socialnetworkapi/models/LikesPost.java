@@ -24,8 +24,6 @@ public class LikesPost {
     @Column(name = "creation_date", nullable = false)
     private Timestamp creationDate;
 
-    /* --- */
-
     public LikesPost() {}
 
     @Override
