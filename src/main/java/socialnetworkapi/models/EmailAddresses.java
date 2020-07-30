@@ -14,8 +14,6 @@ public class EmailAddresses {
     @JoinColumn(name = "person", referencedColumnName = "pid", nullable = false)
     private Person person;
 
-    /* --- */
-
     public EmailAddresses() {}
 
     @Override
@@ -31,6 +29,9 @@ public class EmailAddresses {
     public int hashCode() {
         return Objects.hash(person, email);
     }
+
+    @Override
+    public String toString(){ return person.getFirstName() + " " + person.getLastName() + " " + email; }
 
     public String getEmail() {
         return email;

@@ -32,8 +32,6 @@ public class Tag {
     @JoinTable(name = "tag_has_type", joinColumns = @JoinColumn(name = "tag"), inverseJoinColumns = @JoinColumn(name = "tag_class"))
     private Collection<TagClass> tagClasses;
 
-    /* --- */
-
     public Tag() {}
 
     @Override

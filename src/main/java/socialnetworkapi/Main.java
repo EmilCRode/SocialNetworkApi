@@ -24,7 +24,7 @@ public class Main {
         //transaction.commit();
 
         PersonRelatedImpl pApi = new PersonRelatedImpl();
-        pApi.getProfile(session, (long) 94);
+        pApi.getProfile(session, 12094627905604L);
 
         session.close();
     }

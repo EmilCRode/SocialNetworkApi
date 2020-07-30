@@ -122,7 +122,8 @@ public class Person {
                 +   "\ncreation date: " + creationDate
                 +   "\nlocation ip: " + locationIp
                 +   "\nbrowser: " + browser
-                +   "\ncity: " + city.getName();
+                +   "\ncity: " + city.getName()
+                +   "\nemails: " + emailAddresses;
     }
 
     public long getPid() {

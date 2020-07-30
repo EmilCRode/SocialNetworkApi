@@ -26,7 +26,6 @@ public class TagClass {
     @ManyToMany(mappedBy = "tagClasses")
     private Collection<Tag> tags;
 
-    /* --- */
 
     public TagClass() {}
 
