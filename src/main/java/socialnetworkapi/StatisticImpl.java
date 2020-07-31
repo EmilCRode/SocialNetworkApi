@@ -13,7 +13,7 @@ public class StatisticImpl implements StatisticAPI {
         TagTree tree = new TagTree();
         try {
             List<TagClass> results = session.createQuery("SELECT a FROM TagClass a", TagClass.class).getResultList();
-            while(results.isEmpty() == false) {
+            while(results.isEmpty() == false){
 
             }
         }catch (HibernateException hibernateException){

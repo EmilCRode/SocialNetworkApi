@@ -23,4 +23,15 @@ public class TagTree {
         this.tagClass = tagClass;
     }
     public TagTree(){ }
+
+    public void addChild(Object o){
+        if(children == null){ this.children = new ArrayList<TagTree>(); }
+        if(o.getClass() == Tag.class){
+            TagTree tmp = new TagTree(this, (Tag) o);
+            children.add(tmp);
+        }else if(o.getClass() == TagClass.class) {
+            TagTree tmp = new TagTree(this, (TagClass) o);
+            children.add(tmp);
+        }else{ System.out.println("Error while adding Child to Tree: Object not of right type."); }
+    }
 }

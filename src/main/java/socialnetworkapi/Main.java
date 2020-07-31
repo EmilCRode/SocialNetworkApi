@@ -24,7 +24,10 @@ public class Main {
         //transaction.commit();
 
         PersonRelatedImpl pApi = new PersonRelatedImpl();
-        pApi.getProfile(session, 12094627905604L);
+        //pApi.getProfile(session, 12094627905604L);
+
+        StatisticImpl sApi = new StatisticImpl();
+        sApi.getTagClassHierarchy(session);
 
         session.close();
     }

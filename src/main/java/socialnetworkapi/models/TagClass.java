@@ -43,6 +43,9 @@ public class TagClass {
         return Objects.hash(tcid, name);
     }
 
+    @Override
+    public String toString(){ return this.name;}
+
     public long getTcid() {
         return tcid;
     }
