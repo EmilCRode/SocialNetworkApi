@@ -23,7 +23,7 @@ public class Main {
         //Person p94 = session.get(Person.class, (long) 94);
         //transaction.commit();
 
-        PersonRelatedImpl pApi = new PersonRelatedImpl();
+        //PersonRelatedImpl pApi = new PersonRelatedImpl();
         //pApi.getProfile(session, 12094627905604L);
 
         StatisticImpl sApi = new StatisticImpl();
