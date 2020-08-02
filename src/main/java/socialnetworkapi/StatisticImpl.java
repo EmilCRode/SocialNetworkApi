@@ -14,7 +14,9 @@ public class StatisticImpl implements StatisticAPI {
             root.addChild(startpoint);
         }catch(HibernateException hibernateException) {}
         System.out.println("Begin Tree Print:");
-        root.printTree("");
+        for(int i = 0; i < root.getChildren().size(); i++){
+            root.getChildren().get(i).printTree("");
+        }
     }
 
 

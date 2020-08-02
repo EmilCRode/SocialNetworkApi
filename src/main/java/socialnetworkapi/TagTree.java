@@ -44,6 +44,14 @@ public class TagTree {
         this.parents = new ArrayList<TagTree>();
     }
 
+    /* Getter and Setter */
+    public Object getData() { return data; }
+    public void setData(Object data) { this.data = data; }
+    public ArrayList<TagTree> getParents() { return parents; }
+    public void setParents(ArrayList<TagTree> parents) { this.parents = parents; }
+    public ArrayList<TagTree> getChildren() { return children; }
+    public void setChildren(ArrayList<TagTree> children) { this.children = children; }
+
     public void addChild(Object o){
         if(o.getClass() == Tag.class){
             TagTree tmp = new TagTree(this, (Tag) o);
@@ -72,8 +80,8 @@ public class TagTree {
         }
         return null;
     }
-    public void printTree(String prefix){
-        System.out.println(prefix + this.data);
-        for(TagTree item: this.children){ item.printTree( "-" + prefix); }
+    public void printTree(String postfix){
+        System.out.println("0" + postfix + " " + this.data);
+        for(int i = 0; i < this.children.size(); i++){ this.children.get(i).printTree( postfix + "." + (i+1)); }
     }
 }
