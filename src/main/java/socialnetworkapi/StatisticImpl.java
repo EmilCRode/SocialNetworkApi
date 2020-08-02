@@ -2,14 +2,18 @@ package socialnetworkapi;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import socialnetworkapi.models.LikesRemark;
+import socialnetworkapi.models.Remark;
 import socialnetworkapi.models.TagClass;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class StatisticImpl implements StatisticAPI {
     public void getTagClassHierarchy(Session session){
         TagTree root = new TagTree();
         try{
+            // This need check for multiples roots of the tree even if its stupid //
             TagClass startpoint = session.get(TagClass.class, 0L);
             root.addChild(startpoint);
         }catch(HibernateException hibernateException) {}
@@ -19,61 +23,18 @@ public class StatisticImpl implements StatisticAPI {
         }
     }
 
-
-
-    public void getTagClassHierarchy2(Session session) {
-        TagTree root = new TagTree();
-        try {
-            TagClass[] superClasses;
-            TagClass currentTC;
-            List<TagClass> results = session.createQuery("SELECT a FROM TagClass a", TagClass.class).getResultList();
-            for(int i = 0; i < results.size(); i++) {
-                currentTC = results.get(i);
-                superClasses = currentTC.getSuperclasses().toArray(new TagClass[currentTC.getSuperclasses().size()]);
-                if (superClasses.length == 0) {
-                    root.addChild(currentTC);
-                    results.remove(i);
-                }
-            }
-        }catch (HibernateException hibernateException) {
-            System.out.println("Exception while trying to fetch TagClass Objects: " + hibernateException.getMessage());
-        }
-        root.printTree("Begin Tree Print:\n");
-    }
-    public void getTagClassHierarchy1(Session session) {
-        TagTree root = new TagTree();
-        try {
-            TagClass[] superClasses;
-            TagClass currentTC;
-            List<TagClass> results = session.createQuery("SELECT a FROM TagClass a", TagClass.class).getResultList();
-            for(int i = 0; i < results.size(); i++) {
-                currentTC = results.get(i);
-                superClasses = currentTC.getSuperclasses().toArray(new TagClass[currentTC.getSuperclasses().size()]);
-                if (superClasses.length == 0) {
-                    root.addChild(currentTC);
-                    results.remove(i);
-                }
-            }
-            TagTree currentTree;
-            while(results.isEmpty() == false) {
-                for (int k = 0; k < results.size(); k++) {
-                    int size = results.size();
-                    currentTC = results.get(k);
-                    currentTree = root.search(currentTC.getSuperclasses());
-                    if (currentTree != null) {
-                        currentTree.addChild(currentTC);
-                        results.remove(currentTC);
-                    }
-                }
-            }
-        }catch (HibernateException hibernateException) {
-            System.out.println("Exception while trying to fetch TagClass Objects: " + hibernateException.getMessage());
-        }
-        root.printTree("Begin Tree Print:\n");
-    }
-
     public void getPopularComments(Session session, int k) {
-
+        HashMap<Remark, Integer> remarksPerCount = new HashMap<Remark, Integer>();
+        List<LikesRemark> results = session.createQuery("SELECT a FROM LikesRemark a",LikesRemark.class).getResultList();
+        for(LikesRemark current: results){
+            Remark remark = current.getRemark();
+            Integer count = remarksPerCount.get(remark);
+            if(count == null){ remarksPerCount.put(remark, 1); }
+            else { remarksPerCount.put(remark, count + 1); }
+        }
+        remarksPerCount.forEach((remark,count) -> if(count >= k){
+            System.out.println(remark.);
+        });
     }
 
     public void getMostPostingCountry(Session session) {

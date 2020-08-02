@@ -1,73 +1,35 @@
 package socialnetworkapi;
 
-import socialnetworkapi.models.Tag;
 import socialnetworkapi.models.TagClass;
 
 import java.util.ArrayList;
 
 public class TagTree {
-    private Object data;
-    private ArrayList<TagTree> parents;
+    private TagClass data;
     private ArrayList<TagTree> children;
 
     /* Constructors */
-    public TagTree(Tag tag){
-        this.data =tag;
-        this.parents = new ArrayList<TagTree>();
-        this.children = new ArrayList<TagTree>();
-    }
-    public TagTree(TagTree parent, Tag tag){
-        this.parents.add(parent);
-        this.data = tag;
-        this.children = new ArrayList<TagTree>();
-    }
-    public TagTree(TagClass tagClass){
-        this.data = tagClass;
-        this.parents = new ArrayList<TagTree>();
-        this.children = new ArrayList<TagTree>();
-        for(TagClass currentChild: tagClass.getSubclasses()){
-            this.addChild(currentChild);
-        }
-    }
-    public TagTree(TagTree parent, TagClass tagClass){
-        if(this.parents != null) this.parents.add(parent);
-        else this.parents = new ArrayList<TagTree>();
+    public TagTree(){ this.children = new ArrayList<TagTree>(); }
+    public TagTree(TagClass tagClass) {
         this.data = tagClass;
         this.children = new ArrayList<TagTree>();
-        for(TagClass currentChild: tagClass.getSubclasses()){
+        for (TagClass currentChild : tagClass.getSubclasses()) {
             this.addChild(currentChild);
         }
-
-    }
-    public TagTree(){
-        this.children = new ArrayList<TagTree>();
-        this.parents = new ArrayList<TagTree>();
     }
 
     /* Getter and Setter */
     public Object getData() { return data; }
-    public void setData(Object data) { this.data = data; }
-    public ArrayList<TagTree> getParents() { return parents; }
-    public void setParents(ArrayList<TagTree> parents) { this.parents = parents; }
+    public void setData(TagClass data) { this.data = data; }
     public ArrayList<TagTree> getChildren() { return children; }
     public void setChildren(ArrayList<TagTree> children) { this.children = children; }
 
-    public void addChild(Object o){
-        if(o.getClass() == Tag.class){
-            TagTree tmp = new TagTree(this, (Tag) o);
-            children.add(tmp);
-        }else if(o.getClass() == TagClass.class) {
-            if(parents.contains(o)) return;
-            TagTree tmp = new TagTree(this, (TagClass) o);
-            children.add(tmp);
-
-        }else{ System.out.println("Error while adding Child to Tree: Object not of right type."); }
+    /* Utility Methods */
+    public void addChild(TagClass child){
+        TagTree tmp = new TagTree(child);
+        this.children.add(tmp);
     }
-    public void addParent(TagTree parent){
-        if(parents.contains(parent)) return;
-        parents.add(parent);
-    }
-    public TagTree search(Object target) {
+    public TagTree search(TagClass target) {
         if (target.equals(this.data)) return this;
         if (this.children == null) return null;
         TagTree[] children = this.children.toArray(new TagTree[this.children.size()]);
