@@ -39,7 +39,8 @@ public class StatisticImpl implements StatisticAPI {
         for (Map.Entry<Remark, Integer> entry : remarksPerCount.entrySet()) {
             if(entry.getValue() >= k){
                 System.out.println("Comment ID: " + entry.getKey().getRid()
-                        + "Creator Name: " + entry.getKey().getCreator().getName());
+                        + ", Creator Name: " + entry.getKey().getCreator().getName()
+                        + ", Likes: " + entry.getValue());
             }
         }
     }

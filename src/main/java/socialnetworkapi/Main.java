@@ -28,7 +28,7 @@ public class Main {
 
         StatisticImpl sApi = new StatisticImpl();
         //sApi.getTagClassHierarchy(session);
-        sApi.getPopularComments(session, 50);
+        sApi.getPopularComments(session, 10);
 
         session.close();
     }
