@@ -8,6 +8,7 @@ import socialnetworkapi.models.TagClass;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StatisticImpl implements StatisticAPI {
     public void getTagClassHierarchy(Session session){
@@ -25,16 +26,22 @@ public class StatisticImpl implements StatisticAPI {
 
     public void getPopularComments(Session session, int k) {
         HashMap<Remark, Integer> remarksPerCount = new HashMap<Remark, Integer>();
-        List<LikesRemark> results = session.createQuery("SELECT a FROM LikesRemark a",LikesRemark.class).getResultList();
-        for(LikesRemark current: results){
+        List<LikesRemark> results = session.createQuery("SELECT a FROM LikesRemark a", LikesRemark.class).getResultList();
+        for (LikesRemark current : results) {
             Remark remark = current.getRemark();
             Integer count = remarksPerCount.get(remark);
-            if(count == null){ remarksPerCount.put(remark, 1); }
-            else { remarksPerCount.put(remark, count + 1); }
+            if (count == null) {
+                remarksPerCount.put(remark, 1);
+            } else {
+                remarksPerCount.put(remark, count + 1);
+            }
         }
-        remarksPerCount.forEach((remark,count) -> if(count >= k){
-            System.out.println(remark.);
-        });
+        for (Map.Entry<Remark, Integer> entry : remarksPerCount.entrySet()) {
+            if(entry.getValue() >= k){
+                System.out.println("Comment ID: " + entry.getKey().getRid()
+                        + "Creator Name: " + entry.getKey().getCreator().getName());
+            }
+        }
     }
 
     public void getMostPostingCountry(Session session) {

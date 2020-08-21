@@ -125,6 +125,7 @@ public class Person {
                 +   "\ncity: " + city.getName()
                 +   "\nemails: " + emailAddresses;
     }
+    public String getName(){ return this.firstName + " " + this.lastName; }
 
     public long getPid() {
         return pid;

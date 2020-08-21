@@ -27,7 +27,8 @@ public class Main {
         //pApi.getProfile(session, 12094627905604L);
 
         StatisticImpl sApi = new StatisticImpl();
-        sApi.getTagClassHierarchy(session);
+        //sApi.getTagClassHierarchy(session);
+        sApi.getPopularComments(session, 50);
 
         session.close();
     }
