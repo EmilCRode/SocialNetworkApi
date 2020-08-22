@@ -2,13 +2,9 @@ package socialnetworkapi;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import socialnetworkapi.models.LikesRemark;
-import socialnetworkapi.models.Remark;
-import socialnetworkapi.models.TagClass;
+import socialnetworkapi.models.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class StatisticImpl implements StatisticAPI {
     public void getTagClassHierarchy(Session session){
@@ -45,7 +41,31 @@ public class StatisticImpl implements StatisticAPI {
         }
     }
 
+    /*
+        Checked the result: It checks out in the data. 35 Comments from China + 2074 Posts.
+     */
     public void getMostPostingCountry(Session session) {
-
+        HashMap<Country, Integer> countryPerCount = new HashMap<>();
+        List<Post> postList = session.createQuery("SELECT p FROM Post p", Post.class).getResultList();
+        List<Remark> remarkList = session.createQuery("SELECT r FROM Remark r", Remark.class).getResultList();
+        for (Post currentPost: postList){
+            Country country = currentPost.getCountry();
+            Integer count = countryPerCount.get(country);
+            if(count == null){ countryPerCount.put(country, 1); }
+            else { countryPerCount.put(country, count + 1); }
+        }
+        for (Remark currentRemark: remarkList){
+            Country country = currentRemark.getCountry();
+            Integer count = countryPerCount.get(country);
+            if(count == null){ countryPerCount.put(country, 1); }
+            else { countryPerCount.put(country, count + 1); }
+        }
+        Map.Entry<Country, Integer> maxEntry  = Collections.max(countryPerCount.entrySet(), new Comparator<Map.Entry<Country, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Country, Integer> o1, Map.Entry<Country, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        System.out.println("Country: " + maxEntry.getKey().getName() + " --> Comments and Posts: " + maxEntry.getValue());
     }
 }
