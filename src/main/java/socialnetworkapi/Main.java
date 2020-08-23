@@ -29,7 +29,10 @@ public class Main {
         StatisticImpl sApi = new StatisticImpl();
         //sApi.getTagClassHierarchy(session);
         //sApi.getPopularComments(session, 10);
-        sApi.getMostPostingCountry(session);
+        //sApi.getMostPostingCountry(session);
+
+        PersonRelatedImpl pApi = new PersonRelatedImpl();
+        pApi.getJobRecommendation(session, (long) 94);
 
         session.close();
     }
