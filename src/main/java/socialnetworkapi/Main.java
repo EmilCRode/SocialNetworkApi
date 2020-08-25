@@ -28,7 +28,7 @@ public class Main {
         //pApi.getCommonInterestsOfMyFriends(session, 2199023255625L);
         //pApi.getCommonFriends(session, 2199023255625L, 7696581394474L);
         //pApi.getPersonsWithMostCommonInterests(session, 2199023255625L);
-        pApi.getJobRecommendation(session, (long) 94);
+        pApi.getJobRecommendation(session, 96L);
         //pApi.getShortestFriendshipPath(session, 2199023255625L, 7696581394474L);
 
         StatisticImpl sApi = new StatisticImpl();

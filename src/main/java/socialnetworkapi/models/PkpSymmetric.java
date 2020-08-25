@@ -1,6 +1,8 @@
 package socialnetworkapi.models;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
@@ -23,4 +25,6 @@ public class PkpSymmetric {
     public int hashCode() {
         return Objects.hash();
     }
+
+    public PkpSymmetricPK getKey(){ return this.id; }
 }

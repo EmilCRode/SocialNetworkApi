@@ -1,9 +1,13 @@
 package socialnetworkapi.models;
 
+import org.hibernate.Session;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -124,6 +128,16 @@ public class Person {
                 +   "\nbrowser: " + browser
                 +   "\ncity: " + city.getName()
                 +   "\nemails: " + emailAddresses;
+    }
+    public ArrayList<Person> getFriends(Session session){
+        List<PkpSymmetric> friendConnections = session.createQuery("FROM PkpSymmetric").getResultList();
+        ArrayList<Person> friends = new ArrayList<Person>();
+        for(PkpSymmetric current: friendConnections){
+            if(current.getKey().getPerson_1() == this.pid){
+                friends.add(session.get(Person.class, current.getKey().getPerson_2()));
+            }
+        }
+        return friends;
     }
     public String getName(){ return this.firstName + " " + this.lastName; }
 

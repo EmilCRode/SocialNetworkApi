@@ -192,15 +192,27 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
         Query uniHql = session.createQuery("FROM University u WHERE u.city = :city", University.class);
         uniHql.setParameter("city", person.getCity());
         List<University> universityList = uniHql.getResultList();
+        ArrayList<Person> friends = person.getFriends(session);
         for(University current: universityList){
-            System.out.println(current.getName());
+            for(Person currentFriend: friends){
+                if (currentFriend.getStudiesAts() == current){
+                    System.out.println(current.getName());
+                    return;
+                }
+            }
         }
         Query companyHql = session.createQuery("FROM Company c WHERE c.country = :country", Company.class);
         companyHql.setParameter("country", person.getCity().getIsPartOf());
         List<Company> companyList = companyHql.getResultList();
         for(Company current: companyList){
-            System.out.println(current.getName());
+            for(Person currentFriend: friends){
+                if (currentFriend.getWorksAts() == current){
+                    System.out.println(current.getName());
+                    return;
+                }
+            }
         }
+
 
     }
 
