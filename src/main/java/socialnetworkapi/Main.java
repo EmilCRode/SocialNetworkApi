@@ -23,16 +23,18 @@ public class Main {
         //Person p94 = session.get(Person.class, (long) 94);
         //transaction.commit();
 
-        //PersonRelatedImpl pApi = new PersonRelatedImpl();
+        PersonRelatedImpl pApi = new PersonRelatedImpl();
         //pApi.getProfile(session, 12094627905604L);
+        //pApi.getCommonInterestsOfMyFriends(session, 2199023255625L);
+        //pApi.getCommonFriends(session, 2199023255625L, 7696581394474L);
+        //pApi.getPersonsWithMostCommonInterests(session, 2199023255625L);
+        pApi.getJobRecommendation(session, (long) 94);
+        //pApi.getShortestFriendshipPath(session, 2199023255625L, 7696581394474L);
 
         StatisticImpl sApi = new StatisticImpl();
         //sApi.getTagClassHierarchy(session);
         //sApi.getPopularComments(session, 10);
         //sApi.getMostPostingCountry(session);
-
-        PersonRelatedImpl pApi = new PersonRelatedImpl();
-        pApi.getJobRecommendation(session, (long) 94);
 
         session.close();
     }

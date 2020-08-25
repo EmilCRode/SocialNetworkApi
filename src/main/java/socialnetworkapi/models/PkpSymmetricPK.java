@@ -13,9 +13,9 @@ public class PkpSymmetricPK implements Serializable {
 
     public PkpSymmetricPK() {}
 
-    public PkpSymmetricPK(long person, long remark) {
-        this.person_1 = person;
-        this.person_2 = remark;
+    public PkpSymmetricPK(long person_1, long person_2) {
+        this.person_1 = person_1;
+        this.person_2 = person_2;
     }
 
     @Override
@@ -46,4 +46,3 @@ public class PkpSymmetricPK implements Serializable {
         this.person_2 = person_2;
     }
 }
-

@@ -12,5 +12,5 @@ public interface PersonRelatedAPI {
     public void getPersonsWithMostCommonInterests(Session session, long pid);
     public void getJobRecommendation(Session session, long pid);
     //Hardest method???
-    public void getShortestFriendshipPath(Session session, long pid);
+    public void getShortestFriendshipPath(Session session, long pid1, long pid2);
 }
