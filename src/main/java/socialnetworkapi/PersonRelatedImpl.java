@@ -12,13 +12,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class PersonRelatedImpl implements PersonRelatedAPI{
-    public void getProfile(Session session, long pid) {
-        System.out.println(session.get(Person.class, pid));
+    public void getProfile(Session session, Person person) {
+        System.out.println(person);
     }
 
-    public void getCommonInterestsOfMyFriends(Session session, long pid) {
-        Person person = session.get(Person.class, pid);
-
+    public void getCommonInterestsOfMyFriends(Session session, Person person) {
         // Detect all Interests of Person
         HashSet<Tag> personInterests = new HashSet<>();
         Iterator<Tag> itrTag = person.getHasInterests().iterator();
@@ -75,10 +73,7 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
         }
     }
 
-    public void getCommonFriends(Session session, long pid1, long pid2) {
-        Person person = session.get(Person.class, pid1);
-        Person otherPerson = session.get(Person.class, pid2);
-
+    public void getCommonFriends(Session session, Person person, Person targetPerson) {
         // Detect all Friends of Person
         HashSet<Person> personFriends = new HashSet<>();
         Iterator<Knows> itrKnows = person.getKnows().iterator();
@@ -88,7 +83,7 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
 
         // Detect all common Friends
         HashSet<Person> commonFriends = new HashSet<>();
-        itrKnows = otherPerson.getKnows().iterator();
+        itrKnows = targetPerson.getKnows().iterator();
 
         while (itrKnows.hasNext()) {
             Person personToBeChecked = itrKnows.next().getPerson2();
@@ -99,7 +94,7 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
             }
         }
 
-        itrKnows = otherPerson.getIsKnown().iterator();
+        itrKnows = targetPerson.getIsKnown().iterator();
 
         while (itrKnows.hasNext()) {
             Person personToBeChecked = itrKnows.next().getPerson1();
@@ -126,9 +121,7 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
         }
     }
 
-    public void getPersonsWithMostCommonInterests(Session session, long pid) {
-        Person person = session.get(Person.class, pid);
-
+    public void getPersonsWithMostCommonInterests(Session session, Person person) {
         // Detect all Interests of Person
         HashSet<Tag> personInterests = new HashSet<>();
         Iterator<Tag> itrTag = person.getHasInterests().iterator();
@@ -186,9 +179,8 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
         }
     }
 
-    public void getJobRecommendation(Session session, long pid) {
+    public void getJobRecommendation(Session session, Person person) {
         boolean found = false;
-        Person person = session.get(Person.class, pid);
         Query uniHql = session.createQuery("FROM University u WHERE u.city = :city", University.class);
         uniHql.setParameter("city", person.getCity());
         List<University> universityList = uniHql.getResultList();
@@ -216,10 +208,7 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
 
     }
 
-    public void getShortestFriendshipPath(Session session, long pid1, long pid2) {
-        Person person = session.get(Person.class, pid1);
-        Person targetPerson = session.get(Person.class, pid2);
-
+    public void getShortestFriendshipPath(Session session, Person person, Person targetPerson) {
         ArrayList<Person> bestPath = new ArrayList<>();
         ArrayList<Person> initialPath = new ArrayList<>();
         initialPath.add(person);
