@@ -6,15 +6,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "company")
-public class Company {
+public class Company extends Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cid", nullable = false)
     private long cid;
-
-    @Basic
-    @Column(name = "name", nullable = false, length = -1)
-    private String name;
 
     @ManyToOne
     @JoinColumn(name = "country", referencedColumnName = "counid", nullable = false)
@@ -37,13 +33,12 @@ public class Company {
         if (obj == null || getClass() != obj.getClass()) return false;
         Company other = (Company) obj;
         return (cid == other.cid) &&
-                Objects.equals(this.country, other.country) &&
-                Objects.equals(this.name, other.name);
+                Objects.equals(this.country, other.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cid, name, country);
+        return Objects.hash(cid, country);
     }
 
     public long getCid() {
@@ -51,13 +46,6 @@ public class Company {
     }
     public void setCid(long cid) {
         this.cid = cid;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Country getCountry() {

@@ -6,15 +6,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "country")
-public class Country {
+public class Country extends Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "counid", nullable = false)
     private long counid;
-
-    @Basic
-    @Column(name = "name", nullable = false, length = -1)
-    private String name;
 
     @ManyToOne
     @JoinColumn(name = "is_part_of", referencedColumnName = "contid", nullable = false)
@@ -42,13 +38,12 @@ public class Country {
         if (obj == null || getClass() != obj.getClass()) return false;
         Country other = (Country) obj;
         return counid == other.counid &&
-                Objects.equals(this.isPartOf, other.isPartOf) &&
-                Objects.equals(this.name, other.name);
+                Objects.equals(this.isPartOf, other.isPartOf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(counid, name, isPartOf);
+        return Objects.hash(counid, isPartOf);
     }
 
     public long getCounid() {
@@ -56,13 +51,6 @@ public class Country {
     }
     public void setCounid(long counid) {
         this.counid = counid;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Continent getIsPartOf() {

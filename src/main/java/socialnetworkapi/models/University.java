@@ -6,15 +6,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "university")
-public class University {
+public class University extends Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid", nullable = false)
     private long uid;
-
-    @Basic
-    @Column(name = "name", nullable = false, length = -1)
-    private String name;
 
     @ManyToOne
     @JoinColumn(name = "city", referencedColumnName = "cityid", nullable = false)
@@ -31,13 +27,12 @@ public class University {
         if (obj == null || getClass() != obj.getClass()) return false;
         University other = (University) obj;
         return  (uid == other.uid) &&
-                Objects.equals(this.city, other.city) &&
-                Objects.equals(this.name, other.name);
+                Objects.equals(this.city, other.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uid, name, city);
+        return Objects.hash(uid, city);
     }
 
     public long getUid() {
@@ -45,13 +40,6 @@ public class University {
     }
     public void setUid(long uid) {
         this.uid = uid;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
     public City getCity() {
