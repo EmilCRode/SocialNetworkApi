@@ -187,7 +187,8 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
         ArrayList<Person> friends = person.getFriends(session);
         for(University current: universityList){
             for(Person currentFriend: friends){
-                if (currentFriend.getStudiesAts() == current){
+                if (currentFriend.getStudiesAts().contains(current) && person.getStudiesAts().contains(current) == false){
+                    System.out.println(currentFriend);
                     System.out.println(current.getName());
                     return;
                 }
@@ -198,14 +199,14 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
         List<Company> companyList = companyHql.getResultList();
         for(Company current: companyList){
             for(Person currentFriend: friends){
-                if (currentFriend.getWorksAts() == current){
+                if (currentFriend.getWorksAts().contains(current) && person.getWorksAts().contains(current) == false){
                     System.out.println(current.getName());
                     return;
                 }
             }
         }
-
-
+        System.out.println("Couldn't find a Uni/Job where a friend studies/works at... sorry!");
+        return;
     }
 
     public void getShortestFriendshipPath(Session session, Person person, Person targetPerson) {

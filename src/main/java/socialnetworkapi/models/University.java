@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "university")
-public class University extends Place {
+public class University extends Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid", nullable = false)
@@ -33,6 +33,11 @@ public class University extends Place {
     @Override
     public int hashCode() {
         return Objects.hash(uid, city);
+    }
+
+    @Override
+    public String toString(){
+        return "Universityname: " + this.getName() + ", City: " + this.city;
     }
 
     public long getUid() {

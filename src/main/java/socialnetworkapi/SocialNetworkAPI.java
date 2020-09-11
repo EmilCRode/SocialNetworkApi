@@ -303,4 +303,11 @@ public class SocialNetworkAPI {
 
         return minNumber;
     }
+    public void test(){
+        List<Person> persons = session.createQuery("FROM Person", Person.class).getResultList();
+        PersonRelatedAPI pApi = new PersonRelatedImpl();
+        for(Person current: persons){
+            pApi.getJobRecommendation(session, current);
+        }
+    }
 }

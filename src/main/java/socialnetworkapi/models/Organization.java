@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Organization {
     @Basic
     @Column(name = "name", nullable = false, length = -1)
-    private String name;
+    String name;
 
     public Organization() { }
 
