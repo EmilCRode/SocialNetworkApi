@@ -205,7 +205,7 @@ public class PersonRelatedImpl implements PersonRelatedAPI{
                 }
             }
         }
-        System.out.println("Couldn't find a Uni/Job where a friend studies/works at... sorry!");
+        System.out.println("Konnte keine/n Uni/Job an der/in dem schon ein/e Freund*in arbeitet/studiert... sorry!");
         return;
     }
 
